@@ -1,0 +1,16 @@
+Package: scESI
+Type: Package
+Title: evolutionary sparse imputation for single-cell transcriptomes from nearest neighbor cells
+Version: 0.1.0
+Author: Qiaoming Liu & Guohua Wang
+Maintainer: Qiaoming Liu <lqmmring.work@gmail.com>
+Description: we design an optimization framework based on non-dominated sorting genetics.
+    This framework takes into account the topological relationship between cells 
+    and the variety of gene expression to iteratively search the global optimal solution, 
+    thereby learning the Pareto optimal cell-cell affinity matrix. Finally, we use the 
+    learned sparse relationship model between cells to improve data quality and 
+    reduce data noise. 
+License: GPL-2 | GPL-3
+Encoding: UTF-8
+LazyData: FALSE
+RoxygenNote: 7.1.2
