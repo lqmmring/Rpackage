@@ -39,8 +39,9 @@ imputation.sce<-sparse_imputation_with_selected_genes(data = sce@assays[["RNA"]]
                                                       cores = 10)
 head(imputation.sce[["predictCount"]])
 ```
-An example to show how SCMarker [improve identification of NK cell in GBM data.](https://github.com/KChen-lab/SCMarker/blob/master/test/NK%20cell%20identification%20from%20GBM%20data.pdf)
+An example to show how scESI [discover new cell types on CBMCs from newborns of mothers infected with SARS-CoV-2.](https://github.com/lqmmring/Rpackage)
 
 Acknowledge
 -----------------------
-The authors would like to appreciate the support and guidance from Dr. G.H. Wang and Dr. J. Li.
+The authors would like to appreciate the support and guidance from Dr. G.H. Wang (ghWang@hit.edu.cn)
+and Dr. J. Li.
