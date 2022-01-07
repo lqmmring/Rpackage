@@ -11,14 +11,14 @@ Qiaoming Liu (cslqm@hit.edu.cn)
 
 Installation
 ----------------------
-Download SCMarker_2.0.tar.gz
+Download scESI_0.1.0.tar.gz
 ```R
-install.packages("SCMarker_2.0.tar.gz",repos=NULL,type="source")
+install.packages("scESI_0.1.0.tar.gz",repos=NULL,type="source")
 ```
 or install through GitHub
 ```R
 library(devtools)
-install_github("KChen-lab/SCMarker")
+install_github("lqmmring/scESI/scESI")
 ```
 
 
