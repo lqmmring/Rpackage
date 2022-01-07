@@ -26,19 +26,21 @@ Usage
 ----------------------
 
 ```R
-library(SCMarker)
-data(melanoma)
-melanoma1=as.matrix(melanoma[,2:dim(melanoma)[2]])
-row.names(melanoma1)=melanoma[,1]
-res=ModalFilter(data=melanoma1,geneK=10,cellK=10,width=2)# default width = 1 for UMI data, width =2 for TPM data.
-res=GeneFilter(obj=res)
-res=getMarker(obj=res,k=300,n=30)
-head(res$marker)
+library(scESI)
+sce<-readRDS(file = "/data/covid-gene-0.001-0.999-cell-0.003-0.997.rds")
 
+imputation.sce<-sparse_imputation_with_selected_genes(data = sce@assays[["RNA"]]@counts,
+                                                      processing = TRUE,
+                                                      num.pop=20,
+                                                      num.Iteration=30,
+                                                      crossover.p=0.7,
+                                                      set_num_list=c(50,250,500,800,1000),
+                                                      paralle = TRUE,
+                                                      cores = 10)
+head(imputation.sce[["predictCount"]])
 ```
-
 An example to show how SCMarker [improve identification of NK cell in GBM data.](https://github.com/KChen-lab/SCMarker/blob/master/test/NK%20cell%20identification%20from%20GBM%20data.pdf)
 
-Publication
+Acknowledge
 -----------------------
-Wang, Fang, et al. "SCMarker: ab initio marker selection for single cell transcriptome profiling." PLoS computational biology 15.10 (2019): e1007445.
+The authors would like to appreciate the support and guidance from Dr. G.H. Wang and Dr. J. Li.
