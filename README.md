@@ -27,16 +27,16 @@ Usage
 
 ```R
 library(scESI)
-sce<-readRDS(file = "/data/covid-gene-0.001-0.999-cell-0.003-0.997.rds")
+library(scRNAseq)
 
+sce<-scRNAseq::UsoskinBrainData(ensembl = FALSE, location = TRUE)
 imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays[["RNA"]]@counts,
                                                       processing = TRUE,
                                                       num.pop=20,
                                                       num.Iteration=30,
                                                       crossover.p=0.7,
-                                                      set_num_list=c(50,250,500,800,1000),
-                                                      paralle = TRUE,
-                                                      cores = 10)
+                                                      set_num_list=c(25,50,80,100,150)
+                                                      )
 head(imputation.sce[["predictCount"]])
 ```
 An example to show how scESI [discover new cell types on CBMCs from newborns of mothers infected with SARS-CoV-2.](https://github.com/lqmmring/Rpackage)
