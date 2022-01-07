@@ -30,7 +30,7 @@ library(scESI)
 library(scRNAseq)
 
 sce<-scRNAseq::UsoskinBrainData(ensembl = FALSE, location = TRUE)
-imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays[["RNA"]]@counts,
+imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays@data@listData[["rpm"]],
                                                       processing = TRUE,
                                                       num.pop=20,
                                                       num.Iteration=30,
