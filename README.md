@@ -29,7 +29,7 @@ Usage
 library(scESI)
 sce<-readRDS(file = "/data/covid-gene-0.001-0.999-cell-0.003-0.997.rds")
 
-imputation.sce<-sparse_imputation_with_selected_genes(data = sce@assays[["RNA"]]@counts,
+imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays[["RNA"]]@counts,
                                                       processing = TRUE,
                                                       num.pop=20,
                                                       num.Iteration=30,
