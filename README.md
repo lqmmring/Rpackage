@@ -40,7 +40,6 @@ imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays[[
 head(row.names(imputation.sce[["predictCount"]]))
 head(colnames(imputation.sce[["predictCount"]]))
 ```
-An example to show how scESI [discover new cell types on CBMCs from newborns of mothers infected with SARS-CoV-2.](https://github.com/lqmmring/Rpackage)
 
 Acknowledge
 -----------------------
