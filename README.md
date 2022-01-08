@@ -92,5 +92,4 @@ With other scRNA-seq data analysis tools, scESI can be extended to [infer single
 
 Acknowledge
 -----------------------
-The authors would like to appreciate the support and guidance from Dr. G.H. Wang (ghWang@hit.edu.cn)
-and Dr. J. Li.
+The authors would like to appreciate the support and guidance from Dr. G.H. Wang and Dr. J. Li.
