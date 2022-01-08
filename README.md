@@ -41,7 +41,10 @@ head(row.names(imputation.sce[["predictCount"]]))
 head(colnames(imputation.sce[["predictCount"]]))
 saveRDS(imputation.sce, file='imputed-results.rds')
 ```
-### Clustering with [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html) and [Clustree](https://cran.r-project.org/web/packages/clustree/vignettes/clustree.html)
+
+Clustering with [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html) and [Clustree](https://cran.r-project.org/web/packages/clustree/vignettes/clustree.html)
+----------------------
+
 ```R
 library(Seurat)
 
@@ -78,6 +81,8 @@ DoHeatmap(subset(sce.impute),group.by = 'RNA_snn_res.0.9',features = features, s
 
 saveRDS(sce.impute,file = "imputed-results.rds")
 ```
+
+With other scRNA-seq data analysis tools, scESI can be extended to [infer single cell trajectories](http://cole-trapnell-lab.github.io/monocle-release/docs/) and [construct cell-cell communication network](https://scenic.aertslab.org/tutorials/).
 
 
 Acknowledge
