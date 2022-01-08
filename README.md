@@ -5,7 +5,8 @@ We propose an evolutionary sparse imputation algorithm for single-cell transcrip
 
 Overview
 ------------
-![Overview](overview.png)
+![Overview](overview.jpg)
+
 This framework takes into account the topological relationship between cells and the variety of gene expression to iteratively search the global optimal solution, thereby learning the Pareto optimal cell-cell affinity matrix. Finally, we use the learned sparse relationship model between cells to improve data quality and reduce data noise. 
 
 Developer
