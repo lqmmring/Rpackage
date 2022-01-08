@@ -29,7 +29,7 @@ Usage
 library(scESI)
 library(scRNAseq)
 
-sce<-scRNAseq::UsoskinBrainData(ensembl = FALSE, location = TRUE)
+sce<-scRNAseq::BacherTCellData(ensembl = FALSE, location = TRUE)
 imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays@data@listData[["rpm"]],
                                                       processing = TRUE,
                                                       num.pop=20,
@@ -41,12 +41,11 @@ head(row.names(imputation.sce[["predictCount"]]))
 head(colnames(imputation.sce[["predictCount"]]))
 saveRDS(imputation.sce, file='imputed-results.rds')
 ```
-
-## Clustering with Seurat and Clustree
+### Clustering with [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial.html) and [Clustree](https://cran.r-project.org/web/packages/clustree/vignettes/clustree.html)
 ```R
 library(Seurat)
 
-sce.imputed<-readRDS(file='imputed-results.rds')
+imputation.sce<-readRDS(file='imputed-results.rds')
 sce.impute <- CreateSeuratObject(counts = imputation.sce[["predictCount"]], 
                                  project = "imputed-covid")
 
