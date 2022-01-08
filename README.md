@@ -21,8 +21,9 @@ install.packages("scESI_0.1.0.tar.gz",repos=NULL,type="source")
 ```
 or install through GitHub
 ```R
+install.packages("devtools")
 library(devtools)
-install_github("lqmmring/Rpackage/scESI")
+devtools::install_github("lqmmring/Rpackage/scESI")
 ```
 
 
