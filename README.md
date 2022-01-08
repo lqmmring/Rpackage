@@ -39,7 +39,47 @@ imputation.sce<-scESI::sparse_imputation_with_selected_genes(data = sce@assays@d
                                                       )
 head(row.names(imputation.sce[["predictCount"]]))
 head(colnames(imputation.sce[["predictCount"]]))
+saveRDS(imputation.sce, file='imputed-results.rds')
 ```
+
+## Clustering with Seurat and Clustree
+```R
+library(Seurat)
+
+sce.imputed<-readRDS(file='imputed-results.rds')
+sce.impute <- CreateSeuratObject(counts = imputation.sce[["predictCount"]], 
+                                 project = "imputed-covid")
+
+sce.impute<- FindVariableFeatures(sce.impute, selection.method = 'vst',
+                                  nfeatures = 1000)
+sce.impute <- ScaleData(sce.impute)
+sce.impute <- RunPCA(sce.impute, features = VariableFeatures(object = sce.impute)) 
+sce.impute <- FindNeighbors(sce.impute, dims = 1:15)
+sce.impute <- FindClusters(sce.impute, resolution = c(seq(.1,1.6,.2)))
+sce.impute <- RunUMAP(sce.impute, dims = 1:15)
+sce.impute <- RunTSNE(sce.impute, dims = 1:15)
+clustree(sce.impute@meta.data, prefix = "RNA_snn_res.")
+
+features = c("MS4A1", "CD79A","CD19", #B cell
+             "MZB1", #Plasma cell
+             "CD3E", "CD3D",'IL7R','CD4',"CD8A","CCR7", #T cell
+             "CD14","LYZ","FCGR3A",'S100A4','S100A9', #Monocyte
+             "CST3","CD1C", #Monocyte derived DC
+             "IFITM3", "APOBEC3A","SERPINF1","ZEB2","CD1C", #pDC
+             "PTPRC","CD68","CD163","C1QA","FPR1","ITGAM", #Macrophage
+             "GNLY","NKG7",#NK
+             "ELANE","LTF","MMP8",#Neutrophil
+             "IL1B","NFKBIA","DUSP2",#Inflammatory cytokines
+             "CXCL8"#chemokines
+)
+
+FeaturePlot(sce.impute, features = unique(features))
+DotPlot(sce.impute, group.by = 'RNA_snn_res.0.9',features = unique(features)) + RotatedAxis()
+DoHeatmap(subset(sce.impute),group.by = 'RNA_snn_res.0.9',features = features, size = 3)
+
+saveRDS(sce.impute,file = "imputed-results.rds")
+```
+
 
 Acknowledge
 -----------------------
